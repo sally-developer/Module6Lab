@@ -13,7 +13,7 @@ A fun Razor Pages social media application built with ASP.NET Core.
 
 ![Teen Hangout Homepage](images)
 
-##Teenhangnologies Used
+## Teenhangnologie Used
 
 - ASP.NET Core Razor Pages
 - C#
