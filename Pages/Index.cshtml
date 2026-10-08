@@ -1,0 +1,158 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Teen Hangout";
+}
+
+<style>
+    body {
+        background-color: #fff5fb;
+    }
+
+    .cute-card {
+        border-radius: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .cute-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 12px 25px rgba(255, 105, 180, 0.35);
+    }
+
+    .hero-section {
+        background: linear-gradient(135deg, #ffb6e6, #d8b4fe);
+        color: white;
+        padding: 30px;
+        border-radius: 25px;
+        margin-bottom: 30px;
+    }
+
+    .likes-badge {
+        font-size: 1rem;
+        border-radius: 15px;
+        padding: 8px 12px;
+    }
+    .pink-alert {
+
+background: linear-gradient(135deg, #ffb6e6, #ffd6f5);
+
+color: #7a114f;
+
+border: none;
+
+border-radius: 20px;
+
+padding: 15px;
+
+font-weight: bold;
+
+text-align: center;
+
+transition: all 0.3s ease;
+
+}
+
+ 
+
+.pink-alert:hover {
+
+transform: scale(1.03);
+
+}
+</style>
+
+<div class="container py-4">
+
+    <div class="hero-section text-center shadow">
+        <h1>🌸 Teen Hangout 🌸</h1>
+        <p class="lead">
+            💜 Chat • Share • Connect • Have Fun 💜
+        </p>
+    </div>
+
+    <h2>👥 Meet Our Members</h2>
+
+    @foreach (var user in Model.Users)
+    {
+        <div class="card cute-card mb-3 border-info">
+            <div class="card-body">
+                <h4>✨ @user.Username</h4>
+
+                <p>
+                    🎂 Age: @user.Age <br />
+                    🎨 Favorite Color: @user.FavoriteColor
+                </p>
+            </div>
+        </div>
+    }
+
+    <hr />
+
+    <h2>📱 Recent Posts</h2>
+
+    @foreach (var post in Model.Posts)
+    {
+        <div class="card cute-card mb-3 border-primary">
+            <div class="card-body">
+
+                <h5>💌 @post.Username</h5>
+
+                <p class="fs-5">
+                    @post.Content
+                </p>
+
+                <span class="badge pink-alert likes-badge">
+                    ❤️ @post.Likes Likes
+                </span>
+
+            </div>
+        </div>
+    }
+
+    <hr />
+
+    <h2>🔥 Trending Posts (20+ Likes)</h2>
+
+    @foreach (var post in Model.Posts)
+    {
+        @if (post.Likes >= 20)
+        {
+            <div class="card cute-card mb-3 border-warning bg-light">
+                <div class="card-body">
+
+                    <h4>👑 @post.Username</h4>
+
+                    <p>
+                        @post.Content
+                    </p>
+
+                    <div class="alert alert-warning">
+                        🌟 Trending Post!
+                        <br />
+                        ❤️ Likes: <strong>@post.Likes</strong>
+                    </div>
+                    
+
+                </div>
+            </div>
+        }
+    }
+
+    <hr />
+
+    @{
+        int totalLikes = 0;
+
+        foreach (var post in Model.Posts)
+        {
+            totalLikes += post.Likes;
+        }
+    }
+
+    <div class="alert alert-danger text-center shadow">
+        🎉💖 Our community has received
+        <strong>@totalLikes Likes</strong>
+        in total! 💖🎉
+    </div>
+
+</div>
