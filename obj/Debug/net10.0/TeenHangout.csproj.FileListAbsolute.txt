@@ -95,3 +95,4 @@
 /Users/salma/Desktop/DOTNET-PROJECTS/Labs/Module6Lab/TeenHangout/obj/Debug/net10.0/TeenHangout.pdb
 /Users/salma/Desktop/DOTNET-PROJECTS/Labs/Module6Lab/TeenHangout/obj/Debug/net10.0/TeenHangout.genruntimeconfig.cache
 /Users/salma/Desktop/DOTNET-PROJECTS/Labs/Module6Lab/TeenHangout/obj/Debug/net10.0/ref/TeenHangout.dll
+/Users/salma/Desktop/DOTNET-PROJECTS/Labs/Module6Lab/TeenHangout/obj/Debug/net10.0/TeenHangout.sourcelink.json

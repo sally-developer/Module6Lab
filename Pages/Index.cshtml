@@ -140,6 +140,23 @@ transform: scale(1.03);
 
     <hr />
 
+  
+    @* Posts With Fewer Than 20 Likes *@
+<h2 class="mt-5">🌟 Posts From Users Age 16 or Older</h2>
+
+@foreach (var post in Model.Posts)
+{
+    var user = Model.Users.FirstOrDefault(u => u.Username == post.Username);
+
+    @if (user != null && user.Age >= 16)
+    {
+        <div class="alert alert-info">
+            <strong>@post.Username</strong>
+            <p>@post.Content</p>
+            <small>❤️ Likes: @post.Likes</small>
+        </div>
+    }
+}
     @{
         int totalLikes = 0;
 
@@ -149,10 +166,21 @@ transform: scale(1.03);
         }
     }
 
-    <div class="alert alert-danger text-center shadow">
-        🎉💖 Our community has received
-        <strong>@totalLikes Likes</strong>
-        in total! 💖🎉
+@* Top Posts by Likes *@
+<h2 class="mt-5">🏆 Top Posts By Likes</h2>
+
+@foreach (var post in Model.Posts.OrderByDescending(p => p.Likes))
+{
+    <div class="card cute-card mb-3">
+        <div class="card-body">
+            <h5>@post.Username</h5>
+            <p>@post.Content</p>
+
+            <span class="badge bg-danger">
+                ❤️ @post.Likes Likes
+            </span>
+        </div>
     </div>
+}
 
 </div>
